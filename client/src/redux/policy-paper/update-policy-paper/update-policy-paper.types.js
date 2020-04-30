@@ -1,0 +1,5 @@
+const PolicyPaperActionTypes = {
+  UPDATE_POLICY_PAPER_STARTED: 'UPDATE_POLICY_PAPER_STARTED',
+  UPDATE_POLICY_PAPER_FAILED: 'UPDATE_POLICY_PAPER_FAILED',
+};
+export default PolicyPaperActionTypes;

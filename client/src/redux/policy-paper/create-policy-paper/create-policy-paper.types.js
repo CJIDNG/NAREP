@@ -1,0 +1,5 @@
+const PolicyPaperActionTypes = {
+  CREATE_POLICY_PAPER_STARTED: 'CREATE_POLICY_PAPER_STARTED',
+  CREATE_POLICY_PAPER_FAILED: 'CREATE_POLICY_PAPER_FAILED',
+};
+export default PolicyPaperActionTypes;

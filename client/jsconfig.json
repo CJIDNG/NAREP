@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "paths": {
+      "@Components/*": [
+        "src/components/*"
+      ],
+      "@Atoms/*": [
+        "src/components/UI/atoms/*"
+      ],
+      "@Molecules/*": [
+        "src/components/UI/molecules/*"
+      ],
+      "@Organisms/*": [
+        "src/components/UI/organisms/*"
+      ],
+      "@Pages/*": [
+        "src/components/pages/*"
+      ],
+      "@Redux/*": [
+        "src/redux/*"
+      ],
+      "@Routes/*": [
+        "src/routes/*"
+      ],
+      "@Utils/*": [
+        "src/utils/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "**/node_modules/*"
+  ]
+}

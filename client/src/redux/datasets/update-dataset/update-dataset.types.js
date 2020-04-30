@@ -1,0 +1,5 @@
+const DataSetsActionTypes = {
+  UPDATE_DATASET_STARTED: 'UPDATE_DATASET_STARTED',
+  UPDATE_DATASET_FAILED: 'UPDATE_DATASET_FAILED',
+};
+export default DataSetsActionTypes;
