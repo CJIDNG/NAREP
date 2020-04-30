@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import DatasetLists from '../datasets-collection/dataset-list.component';
 import PolicyPapersList from '../policy-papers-collection/policy-papers-list.component';
 
-const PolicyPapersCollection = ({
+const Collections = ({
   onCollectionFetch, collections, collectionsCount, queryString, listType
 }) => {
   const [activePage, setActivePage] = useState(1);
@@ -23,7 +22,7 @@ const PolicyPapersCollection = ({
       await onCollectionFetch(activePage);
     };
     fetchDatasets();
-  }, [queryString, activePage]);
+  }, [queryString, activePage, onCollectionFetch]);
   return (
     <div>
       {
@@ -48,4 +47,4 @@ const PolicyPapersCollection = ({
   );
 };
 
-export default PolicyPapersCollection;
+export default Collections;

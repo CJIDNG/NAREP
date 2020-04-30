@@ -1,10 +1,11 @@
 import { createSelector } from 'reselect';
 
 const selectDatasets = (state) => state.datasets;
+
 const selectSingleDataset = (state) => state.singleDataset;
 
 export const selectItems = createSelector([selectDatasets],
-  (datasets) => datasets);
+  (datasets) => datasets.datasets);
 
 export const selectItemsCount = createSelector([selectDatasets],
   (datasets) => datasets.numberOfFiles);

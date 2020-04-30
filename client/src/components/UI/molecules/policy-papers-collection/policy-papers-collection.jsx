@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectItems, selectItemsCount } from '@Redux/policy-paper/get-policy-paper/policy-papers.selectors';
@@ -7,12 +7,12 @@ import { fetchPolicyPapersStarted } from '@Redux/policy-paper/get-policy-paper/p
 import Collection from '../fetch-collections/fetch-collections.component';
 
 const PolicyPaper = ({ fetchPolicyPapers, collections, collectionsCount }) => {
-  const getAllPolicyPaper = async (page) => fetchPolicyPapers(page);
+  const getAllPolicyPaper = useCallback(async (page) => fetchPolicyPapers(page), [fetchPolicyPapers]);
   return (
     <Collection
-      onCollectionFetch={getAllPolicyPaper}
-      collections={collections}
-      collectionsCount={collectionsCount}
+      onCollectionFetch={ getAllPolicyPaper }
+      collections={ collections }
+      collectionsCount={ collectionsCount }
       listType="policy-papers"
     />
   );

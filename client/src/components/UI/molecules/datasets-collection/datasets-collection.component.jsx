@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import { selectItems, selectItemsCount, selectSectors } from '@Redux/datasets/get-datasets/datasets.selectors';
 import { fetchDatasetsStarted } from '@Redux/datasets/get-datasets/datasets.actions';
-import { withRouter, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Collection from '../fetch-collections/fetch-collections.component';
 
 const DatasetCollection = ({ fetchDatasets, collections, collectionsCount }) => {
   const query = new URLSearchParams(useLocation().search);
   const queryString = query.get('sectorId');
-  const getAllDatasets = async (page, sectorId) => fetchDatasets(page, sectorId);
+  const getAllDatasets = useCallback(async (page, sectorId) => fetchDatasets(page, sectorId), [fetchDatasets]);
   return (
     <Collection
       onCollectionFetch={ getAllDatasets }
@@ -35,4 +35,4 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = (dispatch) => ({
   fetchDatasets: (page, sectorId) => dispatch(fetchDatasetsStarted(page, sectorId))
 });
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(DatasetCollection));
+export default connect(mapStateToProps, mapDispatchToProps)(DatasetCollection);
