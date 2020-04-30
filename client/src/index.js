@@ -11,12 +11,12 @@ import * as serviceWorker from './serviceWorker';
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 
-ReactDOM.render(<Provider store={store}>
-  <Router history={history}>
-    <PersistGate persistor={persistor}>
+ReactDOM.render(<Provider store={ store }>
+  <Router history={ history }>
+    <PersistGate persistor={ persistor }>
       <App />
     </PersistGate>
   </Router>
 </Provider>,
-document.getElementById('root'));
+  document.getElementById('root'));
 serviceWorker.unregister();
