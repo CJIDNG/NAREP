@@ -1,12 +1,15 @@
-/* eslint-disable no-unused-vars */
 
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('Files', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('Posts', {
     id: {
       allowNull: false,
       primaryKey: true,
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV4,
+    },
+    bannerImage: {
+      type: Sequelize.TEXT,
+      allowNull: false,
     },
     title: {
       type: Sequelize.STRING,
@@ -16,34 +19,22 @@ module.exports = {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    userId: {
-      type: Sequelize.UUID,
+    plainText: {
+      type: Sequelize.TEXT,
+      allowNull: true,
+    },
+    body: {
+      type: Sequelize.JSONB,
       allowNull: false,
-      references: {
-        model: 'Users',
-        key: 'id',
-        as: 'userId',
-      },
     },
     slug: {
+      allowNull: false,
+      type: Sequelize.STRING,
+      unique: true,
+    },
+    readTime: {
+      type: Sequelize.STRING,
       allowNull: true,
-      type: Sequelize.STRING,
-    },
-    numberOfDownload: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-    },
-    fileType: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    fileName: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    sectorId: {
-      type: Sequelize.STRING,
-      allowNull: false,
     },
     createdAt: {
       allowNull: false,
@@ -56,5 +47,5 @@ module.exports = {
       defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
     },
   }),
-  down: (queryInterface) => queryInterface.dropTable('Files'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('Posts'),
 };

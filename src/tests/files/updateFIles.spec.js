@@ -37,7 +37,7 @@ describe('Files update', () => {
   });
   it('should update a file successfully', (done) => {
     request
-      .put(`${API_PREFIX}/files/${slug}`)
+      .post(`${API_PREFIX}/files/${slug}`)
       .set('Authorization', `Bearer ${authorizedUser}`)
       .set('Accept', '*/*')
       .field('title', 'new title')

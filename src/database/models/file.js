@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { createUniqueSlug } from '../../helpers/utils';
 
 module.exports = (sequelize, DataTypes) => {
@@ -22,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.UUID,
     },
     slug: {
-      allowNull: false,
+      allowNull: true,
       type: DataTypes.STRING,
       unique: true,
     },
