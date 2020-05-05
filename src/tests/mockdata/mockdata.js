@@ -27,3 +27,13 @@ export const getUserData = (args) => ({
   ...newUserSignup,
   ...args,
 });
+
+export const newPost = {
+  title: 'Title is required',
+  body: 'Body is required',
+  description: 'Description is required',
+  plainText: 'PlainText is required',
+};
+export const updateExistingPost = {
+  title: 'A new Title is required',
+};

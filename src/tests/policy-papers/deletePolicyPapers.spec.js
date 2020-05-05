@@ -23,9 +23,9 @@ describe('Delete Files', () => {
         done();
       });
   });
-  it('should delete a files successfully', (done) => {
+  it('should delete a policy paper successfully', (done) => {
     server()
-      .delete(`${API_PREFIX}/files/${slug}`)
+      .delete(`${API_PREFIX}/policy-paper/${slug}`)
       .set('Authorization', `Bearer ${authorizedUser}`)
       .end((err, res) => {
         expect(res.status).to.be.eql(200);

@@ -33,6 +33,7 @@ export const createPolicyPaper = async (req, res, next) => {
     fs.rename(path, file, () => (createdFile));
     return successResponse(res, 201, 'file', { message: 'file has been created successfully!', createdFile });
   } catch (error) {
+    console.log(error);
     return next(error);
   }
 };
