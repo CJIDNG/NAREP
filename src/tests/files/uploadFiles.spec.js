@@ -3,7 +3,7 @@ import chaiHttp from 'chai-http';
 import supertest from 'supertest';
 import multer from 'multer';
 import app from '../../server';
-import { adminSignin, userSignin } from '../mockdata/seededUsers';
+import { adminSignin, userSignin } from '../mockdata/mockdata';
 
 const upload = multer({ dest: '/tmp/' });
 

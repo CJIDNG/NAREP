@@ -9,7 +9,7 @@ const { postValidation } = PostValidation;
 const router = express.Router();
 
 router.post('/', verifyUser, verifyAdmin, postValidation, createNewPost);
-router.patch('/:id', verifyUser, verifyAdmin, postValidation, updatePost);
+router.patch('/:id', verifyUser, verifyAdmin, updatePost);
 router.get('/:id', getPostById);
 router.get('/', getAllPosts);
 

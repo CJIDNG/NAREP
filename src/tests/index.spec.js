@@ -7,3 +7,4 @@ import './middlewares/fileValidation.spec';
 // import './files/downloadFiles.spec';
 import './files/updateFIles.spec';
 import './files/deleteFiles.spec';
+import './posts/posts';

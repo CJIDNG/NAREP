@@ -11,6 +11,6 @@ router.use('/auth', authRoutes);
 router.use('/files', datasetsRoutes);
 router.use('/admin', adminRoutes);
 router.use('/policy-paper', policyPaperRoutes);
-router.use('/post', postRoutes);
+router.use('/posts', postRoutes);
 
 export default router;

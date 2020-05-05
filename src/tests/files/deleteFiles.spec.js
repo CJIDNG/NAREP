@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../server';
-import { adminSignin } from '../mockdata/seededUsers';
+import { adminSignin } from '../mockdata/mockdata';
 
 chai.use(chaiHttp);
 
