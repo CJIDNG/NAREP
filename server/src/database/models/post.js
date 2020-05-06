@@ -1,4 +1,4 @@
-import { createUniqueSlug, calculateReadTime } from '../../helpers/utils';
+import { createUniqueSlug, calculateReadTime, removeDuplicateFromArray } from '../../helpers/utils';
 
 module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define('Post', {
@@ -45,7 +45,12 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Post.associate = (models) => {
-    // associations can be defined here
+    Post.belongsToMany(models.PostTag, {
+      through: 'TagPosts',
+      as: 'tags',
+      foreignKey: 'postId',
+      onDelete: 'CASCADE',
+    });
   };
   return Post;
 };

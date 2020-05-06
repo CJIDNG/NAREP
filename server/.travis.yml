@@ -17,6 +17,7 @@ env:
   - NODE_ENV=test
 
 before_script:
+  - cd ./server
   - psql -c "CREATE DATABASE narep_test;" -U postgres
 script:
   - npm test

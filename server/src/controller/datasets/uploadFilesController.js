@@ -5,7 +5,7 @@ import {
   createUniqueSlug, createFileExtension, generateTag,
 } from '../../helpers/utils';
 
-const { File, Sector } = model;
+const { File, Sector, Tag } = model;
 
 export const uploadFile = async (req, res, next) => {
   try {
@@ -44,7 +44,7 @@ export const uploadFile = async (req, res, next) => {
     };
     const createdFile = await File.create(newFile);
 
-    if (tags) await generateTag(tags, createdFile.id);
+    if (tags) await generateTag(tags, createdFile.id, Tag, File);
 
     fs.rename(path, file, () => (createdFile));
     return successResponse(res, 201, 'file', { message: 'file has been created successfully!', createdFile });

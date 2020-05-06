@@ -5,7 +5,7 @@ import slug from 'slug';
 import path from 'path';
 import model from '../database/models';
 
-const { Tag } = model;
+const { Tag, Post } = model;
 
 config();
 
@@ -24,8 +24,8 @@ export const createFileExtension = (filename) => {
   return extension[extension.length - 1];
 };
 
-export const findOrCreateTag = async (tag) => {
-  const createdTag = await Tag.findOrCreate({
+export const findOrCreateTag = async (tag, model) => {
+  const createdTag = await model.findOrCreate({
     where: {
       name: tag,
     },
@@ -38,11 +38,12 @@ export const findOrCreateTag = async (tag) => {
 };
 
 
-export const generateTag = async (tag, id) => {
+export const generateTag = async (tag, id, model, currentModel) => {
   const tags = tag.split(',');
   tags.map(async (Eachtag) => {
-    await findOrCreateTag(Eachtag).then((data) => {
-      data.addFile(id);
+    await findOrCreateTag(Eachtag, model).then((data) => {
+      currentModel === Post ? data.addPost(id) : data.addFile(id)
+        ;
     });
   });
 };
