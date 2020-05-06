@@ -71,7 +71,6 @@ export const getPostById = async (req, res, next) => {
       order: [['updatedAt', 'DESC']],
       where: { id },
     });
-    console.log(post)
     if (!post) {
       return errorResponse(res, 404, { message: 'Post not found' });
     }
@@ -84,8 +83,28 @@ export const getPostById = async (req, res, next) => {
 
 export const getAllPosts = async (req, res, next) => {
   try {
-    const { query: { page, limit } } = req;
+    const { query: { page, limit, tags } } = req;
     const pageNumber = pagination(page, limit);
+    if (tags) {
+      const posts = await PostTag.findAndCountAll({
+        order: [['updatedAt', 'DESC']],
+        attributes: {
+          exclude: ['id', 'name', 'createdAt', 'updatedAt'],
+        },
+        include: [
+          {
+            model: Post,
+            as: 'posts',
+            through: { attributes: [] },
+          },
+        ],
+        where: { id: tags },
+      });
+
+      const { rows: collection, count: postsCount } = posts;
+      const allPosts = collection[0].posts
+      return successResponse(res, 200, 'posts', { postsCount, allPosts });
+    }
     const posts = await Post.findAndCountAll({
       offset: pageNumber.offset,
       limit: pageNumber.limit,
@@ -99,23 +118,15 @@ export const getAllPosts = async (req, res, next) => {
   }
 };
 
-export const getPostByTag = async (req, res, next) => {
-  const { query: { id } } = req;
+
+export const getTags = async (req, res, next) => {
   try {
-    const posts = await PostTag.findAndCountAll({
+    const tags = await PostTag.findAll({
       order: [['updatedAt', 'DESC']],
+      subQuery: false,
       attributes: ['id', 'name'],
-      include: [
-        {
-          model: Post,
-          as: 'posts',
-          through: { attributes: [] },
-        },
-      ],
-      where: { id },
     });
-    const { rows: allPosts, count: postsCount } = posts;
-    return successResponse(res, 200, 'posts', { postsCount, allPosts });
+    return successResponse(res, 200, 'tags', tags);
   } catch (error) {
     return next(error);
   }

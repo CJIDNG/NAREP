@@ -9,8 +9,9 @@ import { policyPaperSagas } from './policy-paper/get-policy-paper/policy-paper.s
 import { deletePolicyPaperSagas } from './policy-paper/delete-policy-paper/delete-policy-paper.sagas';
 import { updatePolicyPaperSagas } from './policy-paper/update-policy-paper/update-policy-paper.sagas';
 import { createPolicyPaperSagas } from './policy-paper/create-policy-paper/create-policy-paper.sagas';
+import { postsSagas } from './posts/posts.sagas';
 
-export default function* rootSaga() {
+export default function* rootSaga () {
   yield all([
     call(userSagas),
     call(datasetsSagas),
@@ -21,6 +22,7 @@ export default function* rootSaga() {
     call(policyPaperSagas),
     call(deletePolicyPaperSagas),
     call(updatePolicyPaperSagas),
-    call(createPolicyPaperSagas)
+    call(createPolicyPaperSagas),
+    call(postsSagas)
   ]);
 }

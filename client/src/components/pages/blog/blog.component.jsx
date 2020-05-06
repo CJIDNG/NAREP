@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from '@Organisms/header/header.component';
-import DatasetContainer from '@Organisms/datasets-container/datasets-container.component';
+import BlogContainer from '@Organisms/blog-container/blog-container.component';
 
 const DataSetsPage = () => (
   <>
     <Header />
-    <DatasetContainer />
+    <BlogContainer />
   </>
 );
 export default DataSetsPage;

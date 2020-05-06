@@ -1,9 +1,9 @@
 import React from 'react';
 import UserProfileIcon from '@Atoms/Icons/user-profile.icon';
 import PropTypes from 'prop-types';
-import CalendarIcon from '@Atoms/Icons//calendar.icon';
-import FileIcon from '@Atoms/Icons//file.icon';
-import DownloadIcon from '@Atoms/Icons//download.icon';
+import CalendarIcon from '@Atoms/Icons/calendar.icon';
+import FileIcon from '@Atoms/Icons/file.icon';
+import DownloadIcon from '@Atoms/Icons/download.icon';
 import TagIcon from '@Atoms/Icons/tag.icon';
 import { handleDateFormat } from '@Utils/helpers/handleDateFormat';
 import DownloadDataset from '@Atoms/dataset-download/dataset-download.component';
@@ -61,7 +61,7 @@ const DatasetPage = ({
             <div>
               {
                 tags ? tags.map(({ id, name }) => (
-                  <TagStyle key={id}>{ name }</TagStyle>
+                  <TagStyle key={ id }>{ name }</TagStyle>
                 )) : null
               }
               {
@@ -74,14 +74,14 @@ const DatasetPage = ({
           <p className="text-gray-800 text-lg capitalize font-semibold">Description</p>
           <p>{ description }</p>
         </div>
-        <DownloadDataset fileId={fileId} path="files" />
-        <SocialShare title={title} />
+        <DownloadDataset fileId={ fileId } path="files" />
+        <SocialShare title={ title } />
 
       </Container>
 
 
     </>
-);
+  );
 DatasetPage.propTypes = {
   title: PropTypes.string.isRequired,
   user: PropTypes.shape({

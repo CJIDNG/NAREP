@@ -6,7 +6,7 @@ import datasetsReducer from './datasets/get-datasets/datasets.reducer';
 import singleDatasetReducer from './datasets/get-datasets/single-dataset.reducer';
 import adminReducer from './admin/admin.reducer';
 import policyPaperReducer from './policy-paper/get-policy-paper/policy-paper.reducer';
-
+import postsReducer from './posts/posts.reducer'
 const persistConfig = {
   key: 'root',
   storage,
@@ -17,7 +17,8 @@ const rootReducer = combineReducers({
   datasets: datasetsReducer,
   singleDataset: singleDatasetReducer,
   admin: adminReducer,
-  policyPapers: policyPaperReducer
+  policyPapers: policyPaperReducer,
+  posts: postsReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);
