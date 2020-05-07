@@ -65,3 +65,13 @@ export const fetchSinglePostFailed = (error) => ({
   type: PostActionTypes.FETCH_POST_FAILED,
   payload: error
 });
+
+export const createPostStarted = (payload) => ({
+  type: PostActionTypes.CREATE_POST_STARTED,
+  payload
+});
+
+export const createPostFailed = (error) => ({
+  type: PostActionTypes.CREATE_POST_FAILED,
+  payload: error
+});

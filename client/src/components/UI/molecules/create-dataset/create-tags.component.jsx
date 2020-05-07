@@ -22,15 +22,15 @@ const TagsInput = ({ selectedTags }) => {
     <Container>
       <InputTags>
         { tags.map((tag, index) => (
-          <InputTag key={index} className="tag">
+          <InputTag key={ index } className="tag">
             <span className="tag-title">{ tag }</span>
-            <Button type="button" onClick={() => { removeTags(index); }}>x</Button>
+            <Button type="button" onClick={ () => { removeTags(index); } }>x</Button>
           </InputTag>
         )) }
       </InputTags>
       <TagInput
         type="text"
-        onKeyDown={(event) => event.key === 'Enter' ? addTags(event) : null}
+        onKeyDown={ (event) => event.key === 'Enter' ? addTags(event) : null }
         placeholder="Press enter to add tags"
       />
     </Container>

@@ -11,6 +11,7 @@ const SignInPage = lazy(() => import('@Pages/signin/signin.component'));
 const PolicyPaperPage = lazy(() => import('@Pages/policy-papers/policy-papers.component'));
 const BlogPage = lazy(() => import('@Pages/blog/blog.component'));
 const SingleBlogPage = lazy(() => import('@Pages/blog/single-post/single-post.component'));
+const CreateBlogPage = lazy(() => import('@Pages/blog/create-post/create-post.component'));
 const PageNotFound = lazy(() => import('@Pages/page-not-found/404.component'));
 
 const Routes = () => (
@@ -21,6 +22,7 @@ const Routes = () => (
     <Route exact path="/datasets" component={ DataSetsPage } />
     <Route exact path="/datasets/:slug" component={ SingleDataset } />
     <Route exact path="/policy-papers" component={ PolicyPaperPage } />
+    <Route exact path="/blog/create" component={ CreateBlogPage } />
     <Route exact path="/blog" component={ BlogPage } />
     <Route exact path="/blog/:slug" component={ SingleBlogPage } />
 

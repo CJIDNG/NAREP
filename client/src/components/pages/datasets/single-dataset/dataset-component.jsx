@@ -60,7 +60,7 @@ const DatasetPage = ({
             </div>
             <div>
               {
-                tags ? tags.map(({ id, name }) => (
+                tags.length ? tags.map(({ id, name }) => (
                   <TagStyle key={ id }>{ name }</TagStyle>
                 )) : null
               }

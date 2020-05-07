@@ -15,7 +15,6 @@ const SinglePost = ({ match: { params: { slug } }, getSinglePost, singlePost: { 
     };
     fetchSinglePost();
   }, [slug, getSinglePost]);
-  console.log(singlePost)
   return (
     <div>
       <Header />

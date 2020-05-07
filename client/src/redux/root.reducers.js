@@ -11,7 +11,7 @@ import singlePostReducer from './posts/single-post.reducer'
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user', 'datasets']
+  whitelist: ['user', 'datasets', 'posts']
 };
 const rootReducer = combineReducers({
   user: userReducer,

@@ -23,10 +23,17 @@ export default {
     }
   },
   fetchSinglePost: async (slug) => {
-    console.log(slug)
     try {
       const response = await API_SERVICE.get(`/posts/${slug}`);
 
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  },
+  createPost: async (data) => {
+    try {
+      const response = await API_SERVICE.post('/posts', data);
       return response;
     } catch (error) {
       return error.response;

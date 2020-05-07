@@ -1,0 +1,55 @@
+.editor {
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  background: red;
+  cursor: text;
+  padding: 16px;
+  border-radius: 2px;
+  margin-bottom: 2em;
+  box-shadow: inset 0px 1px 8px -3px #ABABAB;
+  background: #fff;
+  width: 80%;
+  margin: auto;
+}
+
+.editor :global(.public-DraftEditor-content) {
+  min-height: 140px;
+  
+}
+
+.main-editor {
+  font-weight: 100 !important;
+  width: 99.5%;
+   border: none;
+   background-color:#fff;
+   font-size: 25px;
+   margin: auto; 
+   margin-bottom: 4px;
+   padding-top: 0;
+   min-height: 50vh;
+   font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
+   
+}
+
+.main-editor span {
+  font-weight: normal;
+  font-family: medium content serif;
+  overflow: visible;
+  overflow: auto;
+}
+.editor-toolbar {
+position: absolute;
+left: 20px;
+top: 200px;
+display:flex;
+flex-direction: column;
+border:none;
+}
+
+ .rdw-option-wrapper{
+ border: 1px solid #112d7a;
+}
+
+.rdw-option-disabled{
+  display:none
+}

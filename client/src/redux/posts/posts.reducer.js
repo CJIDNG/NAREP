@@ -15,6 +15,7 @@ const postsReducer = (state = INITIAL_STATE, { type, payload }) => {
     case PostActionTypes.UPDATE_POST_STARTED:
     case PostActionTypes.DELETE_POST_STARTED:
     case PostActionTypes.FETCH_ALL_TAGS_STARTED:
+    case PostActionTypes.FETCH_POST_STARTED:
       return {
         ...state,
         isLoading: true,
@@ -41,6 +42,7 @@ const postsReducer = (state = INITIAL_STATE, { type, payload }) => {
     case PostActionTypes.UPDATE_POST_FAILED:
     case PostActionTypes.DELETE_POST_FAILED:
     case PostActionTypes.FETCH_ALL_TAGS_FAILED:
+    case PostActionTypes.FETCH_POST_FAILED:
       return {
         ...state,
         error: true

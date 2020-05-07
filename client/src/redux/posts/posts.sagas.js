@@ -6,7 +6,8 @@ import API_REQUEST from './posts.requests';
 import PostsActionTypes from './posts.types';
 import {
   fetchPostsFailed, fetchPostsSucceeded, fetchTagsFailed, fetchTagsSucceeded,
-  fetchSinglePostFailed, fetchSinglePostSucceeded
+  fetchSinglePostFailed, fetchSinglePostSucceeded,
+  createPostFailed
 } from './posts.actions';
 
 
@@ -53,6 +54,36 @@ export function* fetchPostBySlug ({ payload: slug }) {
     yield put(fetchSinglePostFailed(error.data.errors.message));
   }
 }
+
+
+export function* createPost ({ payload }) {
+  try {
+    const response = yield call(API_REQUEST.createPost, payload);
+    const { data: { errors } } = response;
+    switch (response.status) {
+      case 404:
+      case 409:
+        toast.error(errors.message, { autoClose: 5000 });
+        return false;
+      case 400:
+        Object.values(errors).map((eachError) => toast.error(eachError, { autoClose: 5000 }));
+        return false;
+      case 201:
+        toast.success('Post successfully created', { autoClose: 5000 });
+        // window.location.reload();
+        return;
+
+      default:
+        return;
+    }
+  } catch (error) {
+    yield put(createPostFailed(error));
+  }
+}
+export function* onCreatePostStart () {
+  yield takeLatest(PostsActionTypes.CREATE_POST_STARTED, createPost);
+}
+
 export function* onFetchPostsStart () {
   yield takeLatest(PostsActionTypes.FETCH_ALL_POSTS_STARTED, fetchPosts);
 }
@@ -66,7 +97,8 @@ export function* postsSagas () {
   yield all([
     call(onFetchPostsStart),
     call(onFetchTagsStart),
-    call(onFetchPostStart)
+    call(onFetchPostStart),
+    call(onCreatePostStart)
 
   ]);
 }

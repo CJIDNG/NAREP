@@ -23,6 +23,7 @@ const DataUpload = ({
   const selectedTags = (items) => {
     setFileCredentials({ ...fileCredentials, tags: items });
   };
+  console.log(tags)
   const onChangeHandler = (event) => {
     setFileCredentials({ ...fileCredentials, file: event.target.files[0] });
   };
@@ -38,13 +39,13 @@ const DataUpload = ({
   };
   return (
     <DataUploadModal
-      handleChange={handleChange}
-      handleSubmit={handleSubmit}
-      title={title}
-      description={description}
-      onChangeHandler={onChangeHandler}
-      selectedTags={selectedTags}
-      trigger={trigger}
+      handleChange={ handleChange }
+      handleSubmit={ handleSubmit }
+      title={ title }
+      description={ description }
+      onChangeHandler={ onChangeHandler }
+      selectedTags={ selectedTags }
+      trigger={ trigger }
     />
   );
 };
