@@ -5,13 +5,13 @@ import TwitterIcon from '@Atoms/Icons/twitter.icon';
 import { facebookShare, twitterShare } from '@Utils/helpers/socialShare';
 
 const fileURL = window.location.toString();
-const SocialShare = ({ title }) => (
+const SocialShare = ({ title, className }) => (
   <div className="mt-5">
-    <span>Share on:</span>
+    <span className={ className }>Share on:</span>
     <div className="flex">
-      <FacebookIcon fill="#3b5998" className="mr-4 cursor-pointer" onClick={() => (facebookShare(title, fileURL))} />
+      <FacebookIcon fill="#3b5998" className="mr-4 cursor-pointer" onClick={ () => (facebookShare(title, fileURL)) } />
 
-      <TwitterIcon fill="#1DA1F2" className="ml-4 cursor-pointer" onClick={() => (twitterShare(title, fileURL))} />
+      <TwitterIcon fill="#1DA1F2" className="ml-4 cursor-pointer" onClick={ () => (twitterShare(title, fileURL)) } />
     </div>
   </div>
 );

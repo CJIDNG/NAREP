@@ -50,3 +50,18 @@ export const fetchTagsFailed = (error) => ({
   type: PostActionTypes.FETCH_ALL_TAGS_FAILED,
   payload: error
 });
+
+export const fetchSinglePostStarted = (slug) => ({
+  type: PostActionTypes.FETCH_POST_STARTED,
+  payload: slug
+});
+
+export const fetchSinglePostSucceeded = (post) => ({
+  type: PostActionTypes.FETCH_POST_SUCCEEDED,
+  payload: post
+});
+
+export const fetchSinglePostFailed = (error) => ({
+  type: PostActionTypes.FETCH_POST_FAILED,
+  payload: error
+});

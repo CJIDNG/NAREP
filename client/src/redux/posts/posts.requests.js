@@ -22,4 +22,14 @@ export default {
       return error.response;
     }
   },
+  fetchSinglePost: async (slug) => {
+    console.log(slug)
+    try {
+      const response = await API_SERVICE.get(`/posts/${slug}`);
+
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  },
 };

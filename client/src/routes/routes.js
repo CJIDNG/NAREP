@@ -22,7 +22,7 @@ const Routes = () => (
     <Route exact path="/datasets/:slug" component={ SingleDataset } />
     <Route exact path="/policy-papers" component={ PolicyPaperPage } />
     <Route exact path="/blog" component={ BlogPage } />
-    <Route exact path="/blog/:id" component={ SingleBlogPage } />
+    <Route exact path="/blog/:slug" component={ SingleBlogPage } />
 
     <ProtectedRoute exact path="/admin-dashboard" component={ AdminPage } />
 

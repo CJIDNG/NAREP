@@ -64,12 +64,12 @@ export const updatePost = async (req, res, next) => {
 };
 
 
-export const getPostById = async (req, res, next) => {
+export const getPostBySlug = async (req, res, next) => {
   try {
-    const { params: { id } } = req;
-    const post = await Post.findAndCountAll({
+    const { params: { slug } } = req;
+    const post = await Post.findOne({
       order: [['updatedAt', 'DESC']],
-      where: { id },
+      where: { slug },
     });
     if (!post) {
       return errorResponse(res, 404, { message: 'Post not found' });

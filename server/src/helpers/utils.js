@@ -60,9 +60,7 @@ export const pagination = (page = 1, pageLimit = 10) => {
 
 export const calculateReadTime = (post) => {
   const averageWordsPerMinute = 200;
-
   const numberOfWords = post.match(/\b[-'?(\w+)]+/gi).length;
-
-  const readtime = Math.round((numberOfWords / averageWordsPerMinute) * 60);
-  return `${readtime} secs`;
+  const readtime = Math.round((numberOfWords / averageWordsPerMinute));
+  return readtime;
 };

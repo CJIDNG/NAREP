@@ -24,7 +24,7 @@ module.exports = {
       allowNull: true,
     },
     body: {
-      type: Sequelize.JSONB,
+      type: Sequelize.TEXT,
       allowNull: false,
     },
     slug: {

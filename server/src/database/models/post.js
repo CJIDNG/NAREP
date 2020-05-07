@@ -14,11 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     title: {
-      type: DataTypes.JSONB,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     description: {
-      type: DataTypes.JSONB,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     plainText: {
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
     body: {
-      type: DataTypes.JSONB,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     slug: {
@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Post.beforeCreate((newPost) => {
     newPost.slug = createUniqueSlug(newPost.title);
-    newPost.readTime = calculateReadTime(newPost.plainText);
+    newPost.readTime = calculateReadTime(newPost.body);
   });
 
   Post.associate = (models) => {
