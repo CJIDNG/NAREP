@@ -14,16 +14,6 @@ export const fetchPostsFailed = (error) => ({
   payload: error
 });
 
-export const deletePostStarted = (payload) => ({
-  type: PostActionTypes.DELETE_POST_STARTED,
-  payload
-});
-
-export const deletePostFailed = (error) => ({
-  type: PostActionTypes.DELETE_POST_FAILED,
-  payload: error
-});
-
 export const updatePostStarted = (payload) => ({
   type: PostActionTypes.UPDATE_POST_STARTED,
   payload
@@ -73,5 +63,15 @@ export const createPostStarted = (payload) => ({
 
 export const createPostFailed = (error) => ({
   type: PostActionTypes.CREATE_POST_FAILED,
+  payload: error
+});
+
+export const deletePostStarted = (payload) => ({
+  type: PostActionTypes.DELETE_POST_STARTED,
+  payload
+});
+
+export const deletePostFailed = (error) => ({
+  type: PostActionTypes.DELETE_POST_FAILED,
   payload: error
 });

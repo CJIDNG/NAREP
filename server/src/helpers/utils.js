@@ -39,7 +39,6 @@ export const findOrCreateTag = async (tag, model) => {
 
 
 export const generateTag = async (tag, id, model, currentModel) => {
-  console.log(tag)
   const tags = tag.split(',');
   tags.map(async (Eachtag) => {
     await findOrCreateTag(Eachtag, model).then((data) => {

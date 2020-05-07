@@ -2,12 +2,14 @@ import {
   call, put, takeLatest, all
 } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
+import { push } from 'react-router-redux';
 import API_REQUEST from './posts.requests';
 import PostsActionTypes from './posts.types';
 import {
   fetchPostsFailed, fetchPostsSucceeded, fetchTagsFailed, fetchTagsSucceeded,
   fetchSinglePostFailed, fetchSinglePostSucceeded,
-  createPostFailed
+  createPostFailed,
+  deletePostFailed
 } from './posts.actions';
 
 
@@ -70,7 +72,8 @@ export function* createPost ({ payload }) {
         return false;
       case 201:
         toast.success('Post successfully created', { autoClose: 5000 });
-        // window.location.reload();
+        yield put(push('/blog'));
+        window.location.reload()
         return;
 
       default:
@@ -79,6 +82,30 @@ export function* createPost ({ payload }) {
   } catch (error) {
     yield put(createPostFailed(error));
   }
+}
+
+export function* deletePost ({ payload }) {
+  try {
+    const response = yield call(API_REQUEST.deletePost, payload);
+    const { data: { errors } } = response;
+    switch (response.status) {
+      case 404:
+        toast.error(errors.message, { autoClose: 5000 });
+        return false;
+      case 200:
+        toast.success('Post deleted successfully', { autoClose: 5000 });
+        yield put(push('/blog'));
+        return;
+
+      default:
+        return;
+    }
+  } catch (error) {
+    yield put(deletePostFailed(error));
+  }
+}
+export function* onDeletePostStart () {
+  yield takeLatest(PostsActionTypes.DELETE_POST_STARTED, deletePost);
 }
 export function* onCreatePostStart () {
   yield takeLatest(PostsActionTypes.CREATE_POST_STARTED, createPost);
@@ -98,7 +125,8 @@ export function* postsSagas () {
     call(onFetchPostsStart),
     call(onFetchTagsStart),
     call(onFetchPostStart),
-    call(onCreatePostStart)
+    call(onCreatePostStart),
+    call(onDeletePostStart)
 
   ]);
 }

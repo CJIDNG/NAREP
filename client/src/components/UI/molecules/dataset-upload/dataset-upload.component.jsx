@@ -23,7 +23,6 @@ const DataUpload = ({
   const selectedTags = (items) => {
     setFileCredentials({ ...fileCredentials, tags: items });
   };
-  console.log(tags)
   const onChangeHandler = (event) => {
     setFileCredentials({ ...fileCredentials, file: event.target.files[0] });
   };

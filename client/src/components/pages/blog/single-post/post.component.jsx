@@ -4,14 +4,13 @@ import { Editor } from 'react-draft-wysiwyg';
 import SocialShare from '@Atoms/social-share/social-share.component';
 import { handleReadTime } from '@Utils/helpers/handleReadTime';
 import { handleDateFormat } from '@Utils/helpers/handleDateFormat';
-
-const PostPage = ({ title, description, readTime, body, createdAt }) => {
+import DeletePost from '@Molecules/delete-post/delete-post.component'
+const PostPage = ({ title, description, readTime, body, slug, createdAt }) => {
   const contentState = convertFromRaw(JSON.parse(body));
-
   return (
     <>
       <div className='w-3/4 mx-auto my-10'>
-
+        <DeletePost slug={ slug } />
         <p
           className='text-center font-semibold text-5xl mb-6 capitalize'
         >{ title }

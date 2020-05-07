@@ -39,4 +39,12 @@ export default {
       return error.response;
     }
   },
+  deletePost: async ({ slug }) => {
+    try {
+      const response = await API_SERVICE.delete(`/posts/${slug}`);
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  },
 };

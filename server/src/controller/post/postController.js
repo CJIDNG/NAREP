@@ -10,12 +10,8 @@ export const createNewPost = async (req, res, next) => {
     body: {
       title, body, description, plainText, bannerImage, tags
     },
-    file: {
-      path, originalname,
-    },
   } = req;
   try {
-    const file = `${global.appRoot}/uploads/${originalname}`;
     const createdPost = await Post.create({
       title,
       body,
@@ -24,18 +20,11 @@ export const createNewPost = async (req, res, next) => {
       bannerImage,
       tags
     });
-    const newImage = {
-      postId: createdPost.id,
-      fileName: originalname
-    }
-    const postImage = await PostImage.create(newImage);
     if (tags) await generateTag(tags, createdPost.id, PostTag, Post);
-    fs.rename(path, file, () => (postImage));
     return successResponse(res, 201, 'post', {
       message: 'post has been created successfully!', createdPost
     });
   } catch (error) {
-    console.log(error)
     return next(error);
   }
 };
@@ -107,4 +96,33 @@ export const getTags = async (req, res, next) => {
   } catch (error) {
     return next(error);
   }
+};
+
+export const deletePost = async (req, res, Model) => {
+  const {
+    params: { slug },
+  } = req;
+  const post = await Post.findOne({
+    where: {
+      slug,
+    },
+  });
+  if (!post) {
+    return errorResponse(res, 404, { message: 'Post not found' });
+  }
+  await PostImage.destroy(
+    {
+      where: {
+        postId: post.id,
+      },
+    },
+  );
+  await Post.destroy(
+    {
+      where: {
+        slug
+      },
+    },
+  );
+  return successResponse(res, 200, 'post', { message: 'Post has been deleted successfully!' });
 };
