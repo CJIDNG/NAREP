@@ -39,6 +39,7 @@ export const findOrCreateTag = async (tag, model) => {
 
 
 export const generateTag = async (tag, id, model, currentModel) => {
+  console.log(tag)
   const tags = tag.split(',');
   tags.map(async (Eachtag) => {
     await findOrCreateTag(Eachtag, model).then((data) => {
@@ -64,3 +65,8 @@ export const calculateReadTime = (post) => {
   const readtime = Math.round((numberOfWords / averageWordsPerMinute));
   return readtime;
 };
+
+
+export const ellipsis = (text) => {
+  return text.length > 20 ? text.substring(0, 17) + "..." : text;
+}

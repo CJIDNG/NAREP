@@ -1,16 +1,21 @@
 import model from '../../database/models';
+import fs from 'fs';
 import { successResponse, errorResponse } from '../../helpers/serverResponse';
 import { pagination, generateTag } from '../../helpers/utils';
 
-const { Post, PostTag } = model;
+const { Post, PostTag, PostImage } = model;
 
 export const createNewPost = async (req, res, next) => {
   const {
     body: {
       title, body, description, plainText, bannerImage, tags
     },
+    file: {
+      path, originalname,
+    },
   } = req;
   try {
+    const file = `${global.appRoot}/uploads/${originalname}`;
     const createdPost = await Post.create({
       title,
       body,
@@ -19,46 +24,18 @@ export const createNewPost = async (req, res, next) => {
       bannerImage,
       tags
     });
-    if (tags) await generateTag(tags, createdPost.id, PostTag, Post);
-    return successResponse(res, 201, 'post', {
-      message: 'post has been created successfully!',
-      createdPost,
-    });
-  } catch (error) {
-    return next(error);
-  }
-};
-
-export const updatePost = async (req, res, next) => {
-  const {
-    params: { id },
-    body: {
-      title, body, description, plainText, bannerImage,
-    },
-  } = req;
-  try {
-    const post = await Post.findOne({
-      where: { id },
-    });
-    if (!post) {
-      return errorResponse(res, 404, { message: 'Post not found' });
+    const newImage = {
+      postId: createdPost.id,
+      fileName: originalname
     }
-    const updatedPost = await post.update({
-      title,
-      body,
-      description,
-      plainText,
-      bannerImage,
-    },
-      {
-        where: { id },
-        returning: true,
-      });
-    return successResponse(res, 200, 'post', {
-      message: 'Post has been updated successfully!',
-      updatedPost,
+    const postImage = await PostImage.create(newImage);
+    if (tags) await generateTag(tags, createdPost.id, PostTag, Post);
+    fs.rename(path, file, () => (postImage));
+    return successResponse(res, 201, 'post', {
+      message: 'post has been created successfully!', createdPost
     });
   } catch (error) {
+    console.log(error)
     return next(error);
   }
 };

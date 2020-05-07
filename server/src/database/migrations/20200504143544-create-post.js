@@ -12,20 +12,20 @@ module.exports = {
       allowNull: false,
     },
     title: {
-      type: Sequelize.STRING,
-      allowNull: false,
+      type: Sequelize.JSONB,
+      allowNull: false
     },
     description: {
-      type: Sequelize.STRING,
-      allowNull: false,
+      type: Sequelize.JSONB,
+      allowNull: false
+    },
+    body: {
+      type: Sequelize.JSONB,
+      allowNull: false
     },
     plainText: {
       type: Sequelize.TEXT,
-      allowNull: true,
-    },
-    body: {
-      type: Sequelize.TEXT,
-      allowNull: false,
+      allowNull: true
     },
     slug: {
       allowNull: false,

@@ -18,13 +18,14 @@ const debug = Debug(process.env.DEBUG);
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json());
 app.use(logger(':method :url :status :res[content-length] - :response-time ms'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(router);
 app.use(express.json());
 app.use('/api/v1/docs', swaggerUI.serve, swaggerUI.setup(docs));
 app.use(serverErrorResponse);
+app.use(express.static('../../client/public'))
 
 process.on('uncaughtException', (err) => {
   debug(err.stack);
