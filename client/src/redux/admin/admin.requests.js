@@ -19,7 +19,7 @@ export default {
   },
   updateUser: async ({ email, role }) => {
     try {
-      const response = await API_SERVICE.patch(`/admin/user/${email}`, role);
+      const response = await API_SERVICE.patch(`/admin/user/${email}`, { role });
       return response;
     } catch (error) {
       return error.response;

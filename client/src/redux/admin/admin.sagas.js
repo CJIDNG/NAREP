@@ -38,9 +38,9 @@ export function* deleteUser (action) {
     yield put(deleteUserFailed(error));
   }
 }
-export function* updateUser (action) {
+export function* updateUser ({ payload }) {
   try {
-    const response = yield call(API_REQUEST.updateUser, action.payload);
+    const response = yield call(API_REQUEST.updateUser, payload);
     const { data: { errors } } = response;
     switch (response.status) {
       case 404:

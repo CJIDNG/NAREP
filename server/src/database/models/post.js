@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     bannerImage: {
       type: DataTypes.TEXT,
-      defaultValue: 'https://www.pexels.com/photo/bookcase-books-bookshop-bookstore-220326/',
+      defaultValue: 'https://picsum.photos/id/1/200/300',
       allowNull: false,
     },
     title: {

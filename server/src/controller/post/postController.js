@@ -3,7 +3,7 @@ import fs from 'fs';
 import { successResponse, errorResponse } from '../../helpers/serverResponse';
 import { pagination, generateTag } from '../../helpers/utils';
 
-const { Post, PostTag, PostImage } = model;
+const { Post, PostTag, TagPost } = model;
 
 export const createNewPost = async (req, res, next) => {
   const {
@@ -106,23 +106,22 @@ export const deletePost = async (req, res, Model) => {
     where: {
       slug,
     },
+    include: [
+      {
+        model: TagPost,
+        as: 'posttags',
+      },
+    ],
   });
   if (!post) {
     return errorResponse(res, 404, { message: 'Post not found' });
   }
-  await PostImage.destroy(
-    {
-      where: {
-        postId: post.id,
-      },
-    },
-  );
   await Post.destroy(
     {
       where: {
         slug
       },
     },
-  );
+  )
   return successResponse(res, 200, 'post', { message: 'Post has been deleted successfully!' });
 };

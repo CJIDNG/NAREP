@@ -24,19 +24,19 @@ const HomePageSector = ({ fetchSectorsStarted: getAllSectors, sectors }) => {
   return (
     <DirectoryMenuContainer>
       {
-        sectors.map(({ id, name }) => (
-          <SectorItemContainer to={`/datasets?sectorId=${id}`} key={id}>
+        sectors ? sectors.map(({ id, name }) => (
+          <SectorItemContainer to={ `/datasets?sectorId=${id}` } key={ id }>
             <LazyLoad>
               <BackgroundImageContainer
                 className="background-image"
-                imageUrl={`${process.env.PUBLIC_URL}/img/sector-${handleImage(name)}.jpg`}
+                imageUrl={ `${process.env.PUBLIC_URL}/img/sector-${handleImage(name)}.jpg` }
               />
               <ContentContainer className="content">
                 <ContentTitle>{ name.toUpperCase() }</ContentTitle>
               </ContentContainer>
             </LazyLoad>
           </SectorItemContainer>
-        ))
+        )) : null
       }
     </DirectoryMenuContainer>
   );
