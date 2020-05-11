@@ -15,6 +15,10 @@ module.exports = {
       type: Sequelize.JSONB,
       allowNull: false
     },
+    plainText: {
+      type: Sequelize.TEXT,
+      allowNull: true
+    },
     description: {
       type: Sequelize.JSONB,
       allowNull: false

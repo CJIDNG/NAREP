@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { handleDateFormat } from '@Utils/helpers/handleDateFormat';
+import { handleDateFormat } from '@Utils/helpers';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '@Redux/user/user.selectors';
@@ -29,13 +29,13 @@ const PolicyPaperItem = ({
         </Title>
       </Item>
       <>
-        <DownloadPolicyPaper fileId={id} path="policy-paper" />
+        <DownloadPolicyPaper fileId={ id } path="policy-paper" />
       </>
       {
         role === 'admin' ? (
           <>
-            <EditPolicyPaper slug={slug} />
-            <DeletePolicyPaper slug={slug} handleDelete={handleDelete} />
+            <EditPolicyPaper slug={ slug } />
+            <DeletePolicyPaper slug={ slug } handleDelete={ handleDelete } />
           </>
         ) : null
       }

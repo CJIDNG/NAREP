@@ -13,6 +13,13 @@ const PostsTags = ({ fetchTags, tags }) => {
   }, [fetchTags]);
   return (
     <div className="px-6 py-4">
+      Tags:
+      { ' ' }
+      <Link to={ `/blog` }>
+        <span
+          className="inline-block bg-gray-200 rounded-full px-3 py-1 text-lg font-semibold text-gray-700 mr-2 capitalize">
+          All </span>
+      </Link>
       {
         tags.map(({ id, name }) => (
           <Link key={ id } to={ `/blog?tags=${id}` }>

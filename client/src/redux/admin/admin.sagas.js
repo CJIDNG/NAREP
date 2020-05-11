@@ -9,7 +9,7 @@ import {
 } from './admin.actions';
 
 
-export function* fetchUsers() {
+export function* fetchUsers () {
   try {
     const fetchedUsers = yield call(API_REQUEST.fetchUsers);
     yield put(fetchUsersSucceeded(fetchedUsers.data.users));
@@ -18,7 +18,7 @@ export function* fetchUsers() {
   }
 }
 
-export function* deleteUser(action) {
+export function* deleteUser (action) {
   try {
     const response = yield call(API_REQUEST.deleteUser, action.payload);
     const { data: { errors } } = response;
@@ -38,7 +38,7 @@ export function* deleteUser(action) {
     yield put(deleteUserFailed(error));
   }
 }
-export function* updateUser(action) {
+export function* updateUser (action) {
   try {
     const response = yield call(API_REQUEST.updateUser, action.payload);
     const { data: { errors } } = response;
@@ -62,19 +62,19 @@ export function* updateUser(action) {
     yield put(updateUserFailed(error));
   }
 }
-export function* onUpdateUserStart() {
+export function* onUpdateUserStart () {
   yield takeLatest(AdminActionTypes.UPDATE_USER_STARTED, updateUser);
 }
 
-export function* onDeleteUserStart() {
+export function* onDeleteUserStart () {
   yield takeLatest(AdminActionTypes.DELETE_USER_STARTED, deleteUser);
 }
 
-export function* onFetchUsersStart() {
+export function* onFetchUsersStart () {
   yield takeLatest(AdminActionTypes.FETCH_ALL_USERS_STARTED, fetchUsers);
 }
 
-export function* adminSagas() {
+export function* adminSagas () {
   yield all([
     call(onFetchUsersStart),
     call(onDeleteUserStart),

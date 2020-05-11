@@ -40,12 +40,24 @@
 .editor-toolbar {
 position: absolute;
 left: 20px;
-top: 200px;
+top: 250px;
 display:flex;
 flex-direction: column;
 border:none;
 }
-
+@media only screen and (max-width: 600px) {
+.editor-toolbar {
+position: relative;
+left: 0;
+top: 0;
+flex-direction: row;
+}
+.rdw-image-modal,.rdw-link-modal  {
+    position: absolute;
+    top: 35px;
+    left: -100px;
+}
+}
  .rdw-option-wrapper{
  border: 1px solid #112d7a;
 }

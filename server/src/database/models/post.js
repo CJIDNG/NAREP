@@ -1,4 +1,4 @@
-import { createUniqueSlug, calculateReadTime, ellipsis } from '../../helpers/utils';
+import { createUniqueSlug, calculateReadTime } from '../../helpers/utils';
 
 module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define('Post', {
@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     bannerImage: {
       type: DataTypes.TEXT,
-      defaultValue: 'https://unsplash.com/photos/IdR3xJFstW0',
+      defaultValue: 'https://www.pexels.com/photo/bookcase-books-bookshop-bookstore-220326/',
       allowNull: false,
     },
     title: {
@@ -41,8 +41,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Post.beforeCreate((newPost) => {
     newPost.slug = createUniqueSlug(newPost.title);
-    newPost.readTime = calculateReadTime(newPost.body);
-    newPost.plainText = ellipsis(newPost.plainText);
+    newPost.readTime = calculateReadTime(newPost.plainText);
   });
 
   Post.associate = (models) => {

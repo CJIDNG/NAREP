@@ -2,6 +2,7 @@ import React from 'react';
 import AddressIcon from '@Atoms/Icons/address.icon';
 import PhoneIcon from '@Atoms/Icons/phone.icon';
 import { FormInput } from './footer.styles';
+import ButtonTeal from '@Atoms/button-teal/button-teal.component';
 
 const Footer = () => (
   <>
@@ -9,12 +10,7 @@ const Footer = () => (
       <div className="footer flex justify-around pt-10">
         <div className="subscribe-form">
           <FormInput type="email" placeholder="E-mail" className="bg-transparent border-solid border-4 border-white px-4 py-2 text-white" />
-          <button
-            type="button"
-            className="ml-5  mt-5 bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded cursor-pointer outline-none"
-          >
-            Subscribe
-          </button>
+          <ButtonTeal children='Subscribe' className='ml-5 cursor-pointer outline-none mt-5' />
         </div>
 
         <div className="contact  text-white ">

@@ -63,9 +63,5 @@ export const calculateReadTime = (post) => {
   const numberOfWords = post.match(/\b[-'?(\w+)]+/gi).length;
   const readtime = Math.round((numberOfWords / averageWordsPerMinute));
   return readtime;
+
 };
-
-
-export const ellipsis = (text) => {
-  return text.length > 20 ? text.substring(0, 17) + "..." : text;
-}

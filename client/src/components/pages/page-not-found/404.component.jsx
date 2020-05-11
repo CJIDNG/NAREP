@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Header from '@Organisms/header/header.component';
 import { Image } from './error.styles';
+import ButtonTeal from '@Atoms/button-teal/button-teal.component';
 
 const PageNotFound = ({ history }) => {
   const handleRedirect = (event) => {
@@ -14,17 +15,11 @@ const PageNotFound = ({ history }) => {
       <Header />
       <div className="flex flex-wrap justify-center self-center mt-10">
 
-        <Image src={`${process.env.PUBLIC_URL}/img/404.png`} alt="Page not found" />
+        <Image src={ `${process.env.PUBLIC_URL}/img/404.png` } alt="Page not found" />
         <div className="flex justify-center self-center flex-col">
           <div className="font-semibold text-4xl">Not Found</div>
           <p>We couldn’t find your page</p>
-          <button
-            type="button"
-            className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded mt-4 uppercase"
-            onClick={handleRedirect}
-          >
-            Back to homepage
-        </button>
+          <ButtonTeal text='Back to homepage' onClick={ handleRedirect } />
         </div>
 
       </div>

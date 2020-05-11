@@ -9,15 +9,17 @@ import TagsInput from '@Molecules/create-dataset/create-tags.component';
 const CreatePost = ({ createNewPost }) => {
   const [postCredentials, setPostCredentials] = useState({
     title: '',
-    tags: []
-
+    tags: [],
   });
   const {
     title, tags
   } = postCredentials;
-
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
-
+  const [images, setImages] = useState({
+    uploadedImages: []
+  })
+  const { uploadedImages
+  } = images;
   const onChange = (event) => {
     const { name, value } = event.target;
     setPostCredentials({ ...postCredentials, [name]: value });
@@ -30,13 +32,27 @@ const CreatePost = ({ createNewPost }) => {
     setPostCredentials({ ...postCredentials, tags: items });
 
   };
-  const uploadImageCallBack = (file) => {
-    const url = 'https://api.cloudinary.com/v1_1/dcfc113t5/image/upload';
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', 'ivyteam');
-    return true;
-  };
+  const uploadImageCallBack = file => new Promise(
+    (resolve, reject) => {
+      var reader = new FileReader();
+      let Images = uploadedImages;
+
+      reader.readAsDataURL(file);
+
+      let img = new Image();
+
+      reader.onload = function (e) {
+        img.src = this.result
+        uploadedImages.push(img.src);
+        setImages({ ...images, Images });
+        resolve({
+          data: {
+            link: img.src
+          }
+        })
+      }
+    }
+  );
   const onSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -50,13 +66,30 @@ const CreatePost = ({ createNewPost }) => {
       description: title,
       body: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
       plainText: JSON.stringify(editorState.getCurrentContent().getPlainText()),
+      bannerImage: uploadedImages[0],
       tags: formObj.tags
-    };
+    }
     await createNewPost(post);
   };
   return (
     <div className='w-3/4 mx-auto'>
-      <button className="article-button" type="submit" onClick={ onSubmit }>Publish</button>
+      <button
+        className="
+        float-right
+        mt-6
+        mr-10
+        text-teal-700 
+        font-semibold hover:text-white 
+        py-2 px-4 
+        border  border-solid border-teal-500 
+        hover:bg-teal-500
+        hover:border-teal-500
+        rounded"
+        type="submit"
+        onClick={ onSubmit }
+      >
+        Publish
+        </button> 
       <div>
         <Textarea
           className="text-4xl text-gray-800 outline-none w-full border-none resize-none overflow-y-hidden font-semibold mb-8 "
@@ -76,7 +109,6 @@ const CreatePost = ({ createNewPost }) => {
           list: { inDropdown: true },
           textAlign: { inDropdown: true },
           link: { inDropdown: false },
-          history: { inDropdown: true },
           image: {
             uploadCallback: uploadImageCallBack,
             placeHolder: 'Write your story...',
@@ -86,7 +118,7 @@ const CreatePost = ({ createNewPost }) => {
             alt: { present: false, mandatory: false },
             defaultSize: {
               height: '500',
-              width: '1000',
+              width: '800',
             },
           }
         } }

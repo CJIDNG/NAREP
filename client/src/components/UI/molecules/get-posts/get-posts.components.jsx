@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect';
 import { selectPosts } from '@Redux/posts/post.selectors';
 import { fetchPostsStarted } from '@Redux/posts/posts.actions';
 import { useLocation } from 'react-router-dom';
-import PostsItem from '@Atoms/posts-item/posts-item.component';
+import PreviewPost from '@Atoms/preview-post/preview-post.component';
 
 const Posts = ({ fetchPosts, posts, history }) => {
   const query = new URLSearchParams(useLocation().search);
@@ -24,7 +24,7 @@ const Posts = ({ fetchPosts, posts, history }) => {
           posts.length ? posts.map(({ id, ...otherProps }) => (
 
 
-            <PostsItem key={ id } { ...otherProps } />
+            <PreviewPost key={ id } { ...otherProps } />
 
           )) : 'No posts'
         }

@@ -5,7 +5,7 @@ import CalendarIcon from '@Atoms/Icons/calendar.icon';
 import FileIcon from '@Atoms/Icons/file.icon';
 import DownloadIcon from '@Atoms/Icons/download.icon';
 import TagIcon from '@Atoms/Icons/tag.icon';
-import { handleDateFormat } from '@Utils/helpers/handleDateFormat';
+import { handleDateFormat } from '@Utils/helpers';
 import DownloadDataset from '@Atoms/dataset-download/dataset-download.component';
 import SocialShare from '@Atoms/social-share/social-share.component';
 import { TagStyle, Container } from './dataset-component.styles';

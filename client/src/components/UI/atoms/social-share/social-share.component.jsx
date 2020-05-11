@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FacebookIcon from '@Atoms/Icons/facebook.icon';
 import TwitterIcon from '@Atoms/Icons/twitter.icon';
-import { facebookShare, twitterShare } from '@Utils/helpers/socialShare';
+import { facebookShare, twitterShare } from '@Utils/helpers';
 
 const fileURL = window.location.toString();
 const SocialShare = ({ title, className }) => (

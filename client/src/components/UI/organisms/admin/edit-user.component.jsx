@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import EditUserModal from '@Components/UI/atoms/modal/edit-user-modal.component';
+import EditUserModal from '@Atoms/modal/edit-user-modal.component';
 import { updateUserStarted } from '@Redux/admin/admin.actions';
 import PropTypes from 'prop-types';
+import EditIcon from '@Atoms/Icons/edit.icon';
 
 const EditUser = ({ email, updateUser, }) => {
   const [userRole, setUserRole] = useState({
@@ -19,10 +20,9 @@ const EditUser = ({ email, updateUser, }) => {
   };
   return (
     <EditUserModal
-      onFormSubmit={handleSubmit}
-      handleChange={handleChange}
-      handleSubmit={handleSubmit}
-      trigger={<button type="button" className="h-10 px-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button>}
+      handleChange={ handleChange }
+      handleSubmit={ handleSubmit }
+      trigger={ <EditIcon className="cursor-pointer" /> }
     />
   );
 };

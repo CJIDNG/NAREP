@@ -5,14 +5,14 @@ import UserProfileIcon from '@Atoms/Icons/user-profile.icon';
 import CalendarIcon from '@Atoms/Icons//calendar.icon';
 import FileIcon from '@Atoms/Icons//file.icon';
 import DownloadIcon from '@Atoms/Icons//download.icon';
-import { handleDateFormat } from '@Utils/helpers/handleDateFormat';
+import { handleDateFormat } from '@Utils/helpers';
 import { Container } from './datasets-item.styles';
 
 const DataSetItem = ({
   title, user: { username }, fileType, numberOfDownload, updatedAt, slug
 }) => (
     <Container>
-      <Link to={`/datasets/${slug}`}>
+      <Link to={ `/datasets/${slug}` }>
         <div className="m-5 border border-gray-500 p-6">
           <h2 className="ml-5 mb-2 text-xl capitalize">
             { title }
@@ -38,7 +38,7 @@ const DataSetItem = ({
         </div>
       </Link>
     </Container>
-);
+  );
 DataSetItem.propTypes = {
   title: PropTypes.string.isRequired,
   fileType: PropTypes.string.isRequired,
