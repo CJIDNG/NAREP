@@ -9,7 +9,6 @@ export const fileDownload = async (req, res, Model) => {
   }
   const { fileName, numberOfDownload } = findFile;
   const filepath = `${global.appRoot}/uploads/${fileName}`;
-  console.log(numberOfDownload)
   numberOfDownload ? await Model.increment({ numberOfDownload: 1 }, { where: { id } }) : null
   return res.download(filepath);
 };
