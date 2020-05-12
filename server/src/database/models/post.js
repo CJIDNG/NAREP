@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     bannerImage: {
       type: DataTypes.TEXT,
-      defaultValue: 'https://picsum.photos/id/1/200/300',
+      defaultValue: 'https://picsum.photos/400/300/?blur',
       allowNull: false,
     },
     title: {

@@ -2,10 +2,9 @@ import React from 'react';
 import { convertFromRaw, EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import SocialShare from '@Atoms/social-share/social-share.component';
-import { handleReadTime } from '@Utils/helpers';
-import { handleDateFormat } from '@Utils/helpers';
+import { handleReadTime, handleDateFormat } from '@Utils/helpers';
 import DeletePost from '@Molecules/delete-post/delete-post.component'
-const PostPage = ({ title, description, readTime, body, slug, createdAt }) => {
+const PostPage = ({ title, readTime, body, slug, createdAt }) => {
   const contentState = convertFromRaw(JSON.parse(body));
   return (
     <>
@@ -15,7 +14,6 @@ const PostPage = ({ title, description, readTime, body, slug, createdAt }) => {
           className='text-center font-semibold text-5xl mb-6 capitalize'
         >{ title }
         </p>
-        <p className='text-center text-2xl mb-6 capitalize'>{ description }</p>
         <p className='text-center text-2xl text-gray-600 my-3'> { handleDateFormat(createdAt) } • { handleReadTime(readTime) }</p>
         <Editor
           editorClassName="main-editor text-3xl mt-6 capitalize"

@@ -7,8 +7,9 @@ export const fileDownload = async (req, res, Model) => {
   if (!findFile) {
     return errorResponse(res, 404, { message: 'File not found' });
   }
-  const { fileName } = findFile;
+  const { fileName, numberOfDownload } = findFile;
   const filepath = `${global.appRoot}/uploads/${fileName}`;
-  await Model.increment({ numberOfDownload: 1 }, { where: { id } });
+  console.log(numberOfDownload)
+  numberOfDownload ? await Model.increment({ numberOfDownload: 1 }, { where: { id } }) : null
   return res.download(filepath);
 };

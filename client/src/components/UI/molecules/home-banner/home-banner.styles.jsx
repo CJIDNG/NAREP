@@ -39,7 +39,7 @@ export const HomeBannerImage = styled.img`
   width:50%;
   padding:2rem;
   display:block;
-  height:auto;
+  height:30rem;
   object-fit: cover;
   @media only screen and (max-width: 800px) {
  display:none;
