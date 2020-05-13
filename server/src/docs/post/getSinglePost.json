@@ -1,0 +1,148 @@
+{
+  "get": {
+    "tags": [
+      "Posts"
+    ],
+    "summary": "Get Single Post",
+    "parameters": [
+      {
+        "name": "slug",
+        "in": "params"
+      }
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "responses": {
+      "200": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "number",
+              "example": 200
+            },
+            "method": {
+              "type": "string",
+              "example": "GET"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "createdPost": {
+                  "post": {
+                    "id": "a7fc5594-3498-4aa9-b59b-00ab0cc5535d",
+                    "bannerImage": "https://unsplash.com/photos/IdR3xJFstW0",
+                    "title": "ed ut perspiciatis unde omnis",
+                    "description": "d ut perspiciatis unde omnis",
+                    "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt",
+                    "plainText": "ed ut perspiciati...",
+                    "readTime": "1",
+                    "slug": "ed-ut-perspiciatis-unde-omnis-1588888976474",
+                    "createdAt": "2020-05-07T22:02:56.471Z",
+                    "updatedAt": "2020-05-07T22:02:56.471Z"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "delete": {
+    "security": [
+      {
+        "Bearer": []
+      }
+    ],
+    "tags": [
+      "Posts"
+    ],
+    "summary": "Delete Post",
+    "parameters": [
+      {
+        "name": "slug",
+        "in": "params",
+        "required": true,
+        "description": "The slug of the file to be deleted",
+        "schema": {
+          "type": "string",
+          "example": "ed-ut-perspiciatis-unde-omnis-1588889150997"
+        }
+      }
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "responses": {
+      "200": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "file": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Post deleted successfully"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "When the post doesn't exist",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "errors": {
+              "type": "object",
+              "properties": {
+                "file": {
+                  "type": "string",
+                  "example": "Post not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "403": {
+        "description": "When a non-logged in user tries to edit an file",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "errors": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Access denied"
+                }
+              }
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Route accessed with an invalid token",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "errors": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "No token provided"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

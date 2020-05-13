@@ -20,6 +20,12 @@
         "description": "Enter page size",
         "required": false,
         "type": "integer"
+      },
+      {
+        "name": "sectorId",
+        "in": "query",
+        "required": false,
+        "type": "string"
       }
     ],
     "produces": [
@@ -54,23 +60,6 @@
                   ]
                 }
               ]
-            }
-          }
-        }
-      },
-      "404": {
-        "description": "files not found",
-        "schema": {
-          "type": "object",
-          "properties": {
-            "errors": {
-              "type": "object",
-              "properties": {
-                "files": {
-                  "type": "string",
-                  "example": "files not found"
-                }
-              }
             }
           }
         }

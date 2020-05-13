@@ -6,10 +6,10 @@
       }
     ],
     "tags": [
-      "Files"
+      "Policy Paper"
     ],
-    "summary": "Download files",
-    "description": "Authenticated User can download files",
+    "summary": "Download file",
+    "description": "Authenticated User can download file",
     "parameters": [
       {
         "name": "id",

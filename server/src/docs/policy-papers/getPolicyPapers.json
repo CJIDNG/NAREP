@@ -1,0 +1,70 @@
+{
+  "get": {
+    "security": [],
+    "tags": [
+      "Policy Paper"
+    ],
+    "summary": "Get All Policy Papers",
+    "description": "Return all Policy Papers available \n",
+    "parameters": [
+      {
+        "name": "page",
+        "in": "query",
+        "description": "Enter page number",
+        "required": false,
+        "type": "integer"
+      },
+      {
+        "name": "limit",
+        "in": "query",
+        "description": "Enter page size",
+        "required": false,
+        "type": "integer"
+      }
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "responses": {
+      "200": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "files": {
+              "type": "array",
+              "example": [
+                {
+                  "files": {
+                    "filesCount": 2,
+                    "allFiles": [
+                      {
+                        "id": "2220240e-4f38-4b4b-ae96-7bf5f80a2b22",
+                        "title": "draftsanothersssss",
+                        "userId": "5b8e15ed-2113-4e58-a533-c24d1b09d856",
+                        "slug": "draftsanothersssss-1589235911164",
+                        "fileType": "png",
+                        "fileName": "lorem.png",
+                        "createdAt": "2020-05-11T22:25:11.163Z",
+                        "updatedAt": "2020-05-11T22:25:11.163Z"
+                      },
+                      {
+                        "id": "ab8b9dd2-22bc-4dc2-b2dd-942a5dcb5437",
+                        "title": "lorem",
+                        "userId": "5b8e15ed-2113-4e58-a533-c24d1b09d856",
+                        "slug": "lorem-12939933",
+                        "fileType": "png",
+                        "fileName": "0f15239e8b1aa04c0023fc38fd790795",
+                        "createdAt": "2020-05-11T22:13:14.734Z",
+                        "updatedAt": "2020-05-11T22:13:14.734Z"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
