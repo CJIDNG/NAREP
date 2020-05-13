@@ -2,11 +2,11 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "NAREP BE",
-    "description": "Welcome to NAREP BE api docs\n "
+    "title": "NAREP",
+    "description": "Welcome to NAREP api docs\n "
   },
   "servers": [
-    "localhost:3000"
+    "localhost:5000"
   ],
   "basePath": "/api/v1",
   "schemes": [
@@ -49,6 +49,90 @@
         },
         "createdOn": {
           "type": "date"
+        }
+      }
+    },
+    "File": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "numberOfDownload": {
+          "type": "number"
+        },
+        "fileType": {
+          "type": "string"
+        },
+        "fileName": {
+          "type": "string"
+        },
+        "sectorId": {
+          "type": "string"
+        }
+      }
+    },
+    "PolicyPaper": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "title": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "fileType": {
+          "type": "string"
+        },
+        "fileName": {
+          "type": "string"
+        }
+      }
+    },
+    "Post": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "bannerImage": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "plainText": {
+          "type": "string"
+        },
+        "readTime": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
         }
       }
     }

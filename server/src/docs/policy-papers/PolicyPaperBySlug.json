@@ -1,0 +1,203 @@
+{
+  "delete": {
+    "security": [
+      {
+        "Bearer": []
+      }
+    ],
+    "tags": [
+      "Policy Paper"
+    ],
+    "summary": "Delete File",
+    "description": "User delete an file \n",
+    "parameters": [
+      {
+        "name": "slug",
+        "in": "path",
+        "required": true,
+        "description": "The slug of the file to be edited",
+        "schema": {
+          "type": "string",
+          "example": "getting-started-with-nodejs-&-express-1564498223366-74536"
+        }
+      }
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "responses": {
+      "200": {
+        "description": "File deleted successfully",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "file": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "File deleted successfully"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "When the file doesn't exist",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "errors": {
+              "type": "object",
+              "properties": {
+                "file": {
+                  "type": "string",
+                  "example": "File not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "403": {
+        "description": "When a non-logged in user tries to edit an file",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "errors": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Access denied"
+                }
+              }
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Route accessed with an invalid token",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "errors": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "No token provided"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "post": {
+    "security": [
+      {
+        "Bearer": []
+      }
+    ],
+    "tags": [
+      "Policy Paper"
+    ],
+    "summary": "Update policy paper",
+    "consumes": "multipart/form-data",
+    "description": "Admin can update policy paper",
+    "parameters": [
+      {
+        "name": "file",
+        "in": "formData",
+        "description": "Enter file",
+        "required": true,
+        "type": "file"
+      },
+      {
+        "name": "title",
+        "in": "formData",
+        "description": "Enter title",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "responses": {
+      "200": {
+        "description": "Update policy paper",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "id": "a993e7e2-9350-41d5-a365-0a8b76f59b5f",
+            "title": "new titles",
+            "description": "new description",
+            "userId": "5b8e15ed-2113-4e58-a533-c24d1b09d856",
+            "slug": "passport-1584093539450",
+            "numberOfDownload": 0,
+            "fileType": "pdf",
+            "fileName": "c597cb4f4417d2a5064752516434aab4",
+            "sectorId": "4e516c87-e25c-4980-ae0e-17ecaa9935dc",
+            "createdAt": "2020-03-13T09:58:59.449Z",
+            "updatedAt": "2020-03-13T12:37:12.979Z"
+          }
+        }
+      },
+      "404": {
+        "description": "File not found ",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "errors": {
+              "type": "object",
+              "properties": {
+                "file": {
+                  "type": "string",
+                  "example": "File not found"
+                }
+              }
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Route accessed with an invalid token",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "errors": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "No token provided"
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Wrongly input details",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "errors": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Title cannot be empty"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

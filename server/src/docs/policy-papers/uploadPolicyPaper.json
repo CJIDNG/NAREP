@@ -6,11 +6,11 @@
       }
     ],
     "tags": [
-      "Files"
+      "Policy Paper"
     ],
-    "summary": "Upload new files",
+    "summary": "Upload new policy-paper",
     "consumes": "multipart/form-data",
-    "description": "Admin can upload new files",
+    "description": "Admin can upload new policy-paper",
     "parameters": [
       {
         "name": "file",
@@ -24,27 +24,6 @@
         "in": "formData",
         "description": "Enter title",
         "required": true,
-        "type": "string"
-      },
-      {
-        "name": "description",
-        "in": "formData",
-        "description": "Enter description",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "sector",
-        "in": "formData",
-        "description": "Enter sector",
-        "required": true,
-        "type": "string"
-      },
-      {
-        "name": "tags",
-        "in": "formData",
-        "description": "Enter tags",
-        "required": false,
         "type": "string"
       }
     ],
@@ -75,17 +54,14 @@
                 "file": {
                   "message": "file has been created successfully!",
                   "createdFile": {
-                    "id": "f19b6399-a1ad-4db4-9201-d14ab6f729f6",
-                    "numberOfDownload": 0,
-                    "title": "docs testing",
-                    "description": "a very short description",
-                    "fileType": "jpeg",
-                    "sectorId": "013411a5-38ce-40db-8328-74b6bf5521f3",
+                    "id": "2220240e-4f38-4b4b-ae96-7bf5f80a2b22",
+                    "title": "draftsanothersssss",
+                    "fileType": "png",
                     "userId": "5b8e15ed-2113-4e58-a533-c24d1b09d856",
-                    "slug": "testing-1583835882202",
-                    "fileName": "7b2730334cc7ab62a5052fde32730015",
-                    "updatedAt": "2020-03-10T10:24:42.200Z",
-                    "createdAt": "2020-03-10T10:24:42.200Z"
+                    "slug": "draftsanothersssss-1589235911164",
+                    "fileName": "lorem.png",
+                    "updatedAt": "2020-05-11T22:25:11.163Z",
+                    "createdAt": "2020-05-11T22:25:11.163Z"
                   }
                 }
               }
