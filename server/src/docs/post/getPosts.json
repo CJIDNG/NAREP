@@ -1,0 +1,156 @@
+{
+  "get": {
+    "security": [],
+    "tags": [
+      "Posts"
+    ],
+    "summary": "Get All Posts",
+    "description": "Return all Posts available \n",
+    "parameters": [
+      {
+        "name": "page",
+        "in": "query",
+        "description": "Enter page number",
+        "required": false,
+        "type": "integer"
+      },
+      {
+        "name": "limit",
+        "in": "query",
+        "description": "Enter page size",
+        "required": false,
+        "type": "integer"
+      },
+      {
+        "name": "tags",
+        "in": "query",
+        "required": true,
+        "description": "Tag Id",
+        "schema": {
+          "type": "string",
+          "example": "35f5c666-d39f-4fb0-b573-28d3af4a4ce3"
+        }
+      }
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "responses": {
+      "200": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "files": {
+              "type": "array",
+              "example": [
+                {
+                  "posts": {
+                    "postsCount": 1,
+                    "allPosts": [
+                      {
+                        "id": "fa488e38-d5b4-4bb1-aab9-0b2ea684f45a",
+                        "bannerImage": "https://www.pexels.com/photo/bookcase-books-bookshop-bookstore-220326/",
+                        "title": "ed ut perspiciatis unde omnis",
+                        "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur",
+                        "description": "New Users",
+                        "plainText": "Sed ut perspiciatis unde omnis iste natus error sit...",
+                        "updatedAt": "2020-05-11T14:51:29.026Z",
+                        "createdAt": "2020-05-11T14:51:29.026Z",
+                        "slug": "ed-ut-perspiciatis-unde-omnis-1589208689028",
+                        "readTime": "1"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "post": {
+    "security": [
+      {
+        "Bearer": []
+      }
+    ],
+    "tags": [
+      "Posts"
+    ],
+    "summary": "Create New Post",
+    "description": "Admin can create new blog post",
+    "parameters": [
+      {
+        "name": "title",
+        "in": "body",
+        "description": "Enter title",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "body",
+        "in": "body",
+        "description": "Enter body",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "in": "body",
+        "description": "Enter description",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "tags",
+        "in": "body",
+        "description": "Enter tags",
+        "required": false,
+        "type": "string"
+      }
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "responses": {
+      "201": {
+        "description": "Post successfully created",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "number",
+              "example": 201
+            },
+            "method": {
+              "type": "string",
+              "example": "POST"
+            },
+            "message": {
+              "type": "string",
+              "example": "post has been created successfully!"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "createdPost": {
+                  "id": "fa488e38-d5b4-4bb1-aab9-0b2ea684f45a",
+                  "bannerImage": "https://www.pexels.com/photo/bookcase-books-bookshop-bookstore-220326/",
+                  "title": "ed ut perspiciatis unde omnis",
+                  "body": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur",
+                  "description": "New Users",
+                  "plainText": "Sed ut perspiciatis unde omnis iste natus error sit...",
+                  "updatedAt": "2020-05-11T14:51:29.026Z",
+                  "createdAt": "2020-05-11T14:51:29.026Z",
+                  "slug": "ed-ut-perspiciatis-unde-omnis-1589208689028",
+                  "readTime": "1"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

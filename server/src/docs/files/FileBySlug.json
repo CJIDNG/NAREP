@@ -15,7 +15,7 @@
         "name": "slug",
         "in": "path",
         "required": true,
-        "description": "The slug of the file to be edited",
+        "description": "The slug of the file to be deleted",
         "schema": {
           "type": "string",
           "example": "getting-started-with-nodejs-&-express-1564498223366-74536"

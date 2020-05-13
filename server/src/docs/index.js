@@ -13,6 +13,11 @@ import PolicyPaperBySlug from './policy-papers/PolicyPaperBySlug.json';
 import downloadPolicyPaper from './policy-papers/downloadPolicyPaper.json';
 import getPolicyPapers from './policy-papers/getPolicyPapers.json';
 
+import Posts from './post/getPosts.json';
+import getSinglePost from './post/getSinglePost.json';
+import getTags from './post/getTags.json';
+
+
 swagger.paths['/auth/signup'] = signup;
 swagger.paths['/auth/signin'] = signin;
 
@@ -26,4 +31,7 @@ swagger.paths['/policy-paper/{slug}'] = PolicyPaperBySlug;
 swagger.paths['/policy-paper/downloads'] = downloadPolicyPaper;
 swagger.paths['/policy-paper'] = getPolicyPapers;
 
+swagger.paths['/posts'] = Posts;
+swagger.paths['/posts/{slug}'] = getSinglePost;
+swagger.paths['/posts/tags'] = getTags;
 export default swagger;

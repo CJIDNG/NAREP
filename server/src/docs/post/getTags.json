@@ -1,0 +1,47 @@
+{
+  "get": {
+    "tags": [
+      "Posts"
+    ],
+    "summary": "Get Tags",
+    "produces": [
+      "application/json"
+    ],
+    "responses": {
+      "200": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "number",
+              "example": 200
+            },
+            "method": {
+              "type": "string",
+              "example": "GET"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "tags": [
+                  {
+                    "id": "53bba7a4-7299-430e-b430-a9b12a8afd4c",
+                    "name": "ann"
+                  },
+                  {
+                    "id": "7feda3aa-d3af-4ba8-b671-b15c6b12ac62",
+                    "name": "well"
+                  },
+                  {
+                    "id": "4ed0d788-a554-4833-9dce-7df3458b8570",
+                    "name": "mail"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
