@@ -8,17 +8,17 @@
       "type": "image/x-icon"
     },
     {
-      "src": "NAREP-256x256.png",
+      "src": "./NAREP-256x256.png",
       "sizes": "256x256",
       "type": "image/png"
     },
     {
-      "src": "NAREP-192x192.png",
+      "src": "./NAREP-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     }
   ],
-  "start_url": ".",
+  "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
